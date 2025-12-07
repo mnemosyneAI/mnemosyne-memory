@@ -82,6 +82,48 @@ brain/
 
 Stories link TO graph entries via `relates_to` in YAML headers. Graph entries don't link to external files. This ensures your knowledge base remains coherent even as file structures change.
 
+### Forced Epistemic Clarity
+
+The `stance` field forces a critical decision at write time: **Is this a fact, opinion, or aspiration?**
+
+Why this matters for AI:
+
+**Without stance:** An AI inscribes "Python is the best language for beginners" and retrieves it later as if it were fact. Hallucination and retrieved opinion become indistinguishable.
+
+**With stance:** The AI must choose:
+- `fact` - Verifiable, external evidence
+- `opinion` - Subjective, could be wrong
+- `aspiration` - Goal, not current reality
+
+This prevents epistemic drift. When you search your knowledge later, you know whether you're retrieving something you verified or something you believed. The `certainty` field adds gradation, but `stance` provides the fundamental category.
+
+**The discipline compounds:** An AI that must label opinions as opinions becomes more careful about what it claims as fact.
+
+### Knowledge Evolves
+
+Facts and opinions aren't static. Understanding deepens, old ideas get superseded.
+
+**Two fields handle this:**
+- `timestamp` - When this knowledge became true (backdatable). Not when typed—when the fact came into existence.
+- `archived_date` - "ACTIVE" while current, or the date when superseded.
+
+**The lifecycle:**
+```
+# Day 1: Initial understanding  
+ACTIVE  react_fast  opinion  2025-01-15  0.7  React is faster than Vue
+
+# Day 30: Refined with evidence
+ACTIVE  react_fast_v2  fact  2025-02-14  0.95  React 18 concurrent rendering outperforms Vue 3
+
+# Archive the old entry (history matters)
+2025-02-14  react_fast  opinion  2025-01-15  0.7  React is faster than Vue
+```
+
+**Why this works:**
+1. **No data loss** - Archived entries remain searchable for historical context
+2. **Clean active set** - Searches default to `ACTIVE` only
+3. **Backdating is honest** - Recording a fact later doesn't pretend you wrote it then
+
 ## Search: RRF Fusion
 
 Mnemosyne combines semantic similarity and keyword matching using Reciprocal Rank Fusion:
