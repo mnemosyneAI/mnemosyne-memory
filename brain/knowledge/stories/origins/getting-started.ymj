@@ -1,0 +1,28 @@
+---
+doc_type: story
+title: Getting Started with Mnemosyne
+created: 2025-01-01
+category: origins
+relates_to: []
+tags: [origins, tutorial]
+---
+
+# Getting Started with Mnemosyne
+
+This is a sample story to show the format.
+
+Stories are for narrative - the arc, the context, the meaning behind facts. While your graph stores discrete knowledge, stories weave them together.
+
+## Why Stories Matter
+
+Facts alone are sterile. "Water boils at 100°C" is useful. But the story of *why* you needed to know that, what problem you were solving, what you learned - that's what makes knowledge alive.
+
+## How to Use This
+
+1. Replace this content with your own story
+2. Add `relates_to` entries linking to your graph
+3. Delete this example when you have real stories
+
+---
+
+*This is where reflections go. Connect to other entries. Add context that doesn't fit the main narrative.*

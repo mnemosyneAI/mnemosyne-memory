@@ -1,0 +1,26 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+.venv/
+venv/
+
+# Cache
+.cache/
+*.egg-info/
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Don't track actual memory content (users add their own)
+# But DO track example files
+!examples/
+!brain/knowledge/stories/origins/getting-started.ymj
+!brain/knowledge/foundations/memory-usage.ymj

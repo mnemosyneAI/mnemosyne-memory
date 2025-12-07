@@ -1,0 +1,87 @@
+---
+doc_type: knowledge
+title: Memory System Usage Manual
+created: 2025-01-01
+maintained_by: mnemosyne
+kind: manual
+---
+
+# Memory System Usage Manual
+
+How to use your Mnemosyne memory effectively.
+
+---
+
+## Core Components
+
+### graph.tsv - The Permanent Record
+
+Everything inscribed here is permanent. External data is brittle (files move, names change). The graph is forever.
+
+**Key Fields:**
+- `id` - Unique reference
+- `stance` - Type of knowledge (fact, opinion, aspiration, observation, link, question, protocol)
+- `timestamp` - When the fact became true (backdatable)
+- `archived_date` - "ACTIVE" or the date archived
+- `certainty` - Confidence level 0-1
+- `domain` - Topic area
+- `content` - The actual knowledge
+
+### stories/ - Narrative Texture
+
+Stories add the arc, feeling, and meaning that structured facts can't capture.
+
+**Categories:**
+- `origins/` - How things began
+- `aspirations/` - Why goals matter
+- `episodes/` - Significant events
+- `breakthroughs/` - Moments of change
+- `lessons/` - Hard-won wisdom
+
+### reference/ - External Knowledge
+
+Reference materials, external documents, ingested content. Things learned FROM, not created.
+
+---
+
+## Commands
+
+```bash
+# Search (RRF fusion)
+uv run scripts/sfa_memory.py search "query"
+
+# Add to graph
+uv run scripts/sfa_memory.py inscribe "content" --stance fact --domain topic
+
+# Archive (mark no longer current)
+uv run scripts/sfa_memory.py archive ref_id
+
+# Create story
+uv run scripts/sfa_memory.py tell "title" --category origins
+
+# Check links
+uv run scripts/sfa_memory.py validate
+
+# Health check
+uv run scripts/sfa_memory.py stats
+```
+
+---
+
+## Best Practices
+
+### When to Inscribe vs Tell
+
+- **Inscribe:** Discrete fact, opinion, or aspiration. Atomic. Searchable.
+- **Tell:** Narrative with context, arc, emotion. References multiple graph entries.
+
+### Temporal Model
+
+- `timestamp` = when fact became true
+- `archived_date` = when fact stopped being current
+
+### Key Principle
+
+**Graph is forever. External data is brittle.**
+
+Stories link TO graph entries via `relates_to` in YAML header. Graph entries do NOT link to external files.

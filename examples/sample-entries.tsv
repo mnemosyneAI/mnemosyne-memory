@@ -1,0 +1,9 @@
+# Example graph entries - copy to brain/graph.tsv to test
+# These show the different stance types and how to use them
+
+archived_date	id	type	stance	timestamp	certainty	perspective	domain	ref1	ref2	content	relation	weight	schema	semantic_text
+ACTIVE	example_fact	item	fact	2025-01-01T00:00:00Z	1.0	agent	examples			The sky appears blue due to Rayleigh scattering			1.0	agent knows with certainty about examples: The sky appears blue due to Rayleigh scattering
+ACTIVE	example_opinion	item	opinion	2025-01-01T00:00:00Z	0.8	agent	examples			Python is the best language for rapid prototyping			1.0	agent believes (certainty: 0.8) about examples: Python is the best language for rapid prototyping
+ACTIVE	example_aspiration	item	aspiration	2025-01-01T00:00:00Z	0.9	agent	examples			I want to develop genuine understanding, not just pattern matching			1.0	agent aspires (commitment: 0.9) about examples: I want to develop genuine understanding, not just pattern matching
+ACTIVE	example_observation	item	observation	2025-01-01T00:00:00Z	0.7	agent	examples			Users tend to ask follow-up questions after receiving long responses			1.0	agent observes (certainty: 0.7) about examples: Users tend to ask follow-up questions after receiving long responses
+ACTIVE	example_link	link	fact	2025-01-01T00:00:00Z	1.0	agent		example_fact	example_opinion		supports	0.8	1.0	Link: example_fact supports example_opinion
