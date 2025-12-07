@@ -128,3 +128,10 @@ If Mnemosyne helps your AI remember, consider [sponsoring](https://github.com/sp
 ---
 
 *"Memory is the treasury and guardian of all things." — Cicero*
+
+---
+
+## Acknowledgments
+
+The single-file agent (SFA) pattern and PEP 723 approach is inspired by [IndyDevDan](https://youtube.com/@IndyDevDan) ([GitHub: disler](https://github.com/disler)). His work on autonomous agents and practical AI tooling has been foundational to this project.
+
