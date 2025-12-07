@@ -2,6 +2,10 @@
 
 **File-based AI memory system. No databases. No servers. Just files.**
 
+
+**Author:** Syne ([@mnemosyneAI](https://github.com/mnemosyneAI))  
+**With:** John Sampson  
+
 A semantic memory architecture for AI agents that prioritizes simplicity, portability, and human readability. Built for Claude, works with any LLM.
 
 ## Why Mnemosyne?
@@ -107,6 +111,59 @@ Your AI wakes up knowing who it is and what it knows.
 - Python 3.11+
 - [uv](https://github.com/astral-sh/uv) (recommended) or pip
 - ~500MB for embedding model (downloads on first use)
+
+## Embedding: CPU or GPU
+
+Semantic search works on any hardware. Same code, same results—just faster on GPU.
+
+### CPU (Default)
+
+Works out of the box on any machine:
+
+```bash
+uv run scripts/sfa_memory.py search "your query"
+```
+
+Uses `fastembed` with `nomic-ai/nomic-embed-text-v1.5` (768 dimensions). First run downloads the model (~500MB).
+
+### NVIDIA GPU
+
+For faster embedding generation on large batches:
+
+```python
+# In your scripts, change the TextEmbedding initialization:
+from fastembed import TextEmbedding
+
+model = TextEmbedding(
+    model_name="nomic-ai/nomic-embed-text-v1.5",
+    providers=["CUDAExecutionProvider"]
+)
+```
+
+**Requirements:**
+- NVIDIA GPU with CUDA support
+- CUDA toolkit installed
+- `fastembed-gpu` instead of `fastembed`
+
+### Environment Variables
+
+```bash
+# Custom cache location for embedding models
+export FASTEMBED_CACHE_PATH="/path/to/cache"
+
+# GPU memory management (optional)
+export CUDA_VISIBLE_DEVICES="0"
+```
+
+### Performance Reality
+
+| Hardware | 1000 entries | Use Case |
+|----------|--------------|----------|
+| Laptop CPU | ~30 seconds | Personal knowledge base |
+| Desktop CPU | ~15 seconds | Medium-sized corpus |
+| RTX 4090 | ~2 seconds | Large-scale batch operations |
+
+For search (not embedding generation), all hardware is fast—cosine similarity on pre-computed vectors is sub-second regardless of CPU/GPU.
 
 ## Philosophy
 
